@@ -93,7 +93,6 @@ exports.updateUser = async (req, res) => {
 exports.statusUser = async (req, res) => {
   const id = req.params.id;
   const {status} = req.body
-
   try {
     const user = await User.findById({ id });
     if (!user) throw new Error('the blog does not exist');
