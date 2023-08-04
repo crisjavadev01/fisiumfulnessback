@@ -19,10 +19,18 @@ const Product = new Schema(
       required: true,
     },
     image: {
+      type: Array,
+      required: true,
+    },
+    id_image1: {
       type: String,
       required: true,
     },
-    id_image: {
+    id_image2: {
+      type: String,
+      required: true,
+    },
+    id_image3: {
       type: String,
       required: true,
     },

@@ -14,7 +14,7 @@ const { upload } = require('../config/multerConfig');
 
 const router = Router();
 
-router.post('/create', adminAuthMiddleware, upload, createProduct);
+router.post('/create', upload, createProduct);
 router.get('/', getAllProduct);
 router.get('/detail/:id', getProductDetail);
 router.put('/update/:id', adminAuthMiddleware, upload, updateProduct);
