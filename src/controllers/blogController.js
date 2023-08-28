@@ -26,7 +26,7 @@ exports.createBlog = async (req, res) => {
     await blog.save();
     return res.status(200).json({ blog });
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return res.status(400).json({ message: error.message });
   }
 };
@@ -50,7 +50,7 @@ exports.getAllBlog = async (req, res) => {
 exports.updateBlog = async (req, res) => {
   const id = req.params.id;
   const { text, title, type_id, createBy, id_image } = req.body;
-  console.log({ type_id });
+  //console.log({ type_id });
   try {
     const hasFile = !!req.file;
     let newImage = undefined;
@@ -111,7 +111,7 @@ exports.getBlogDetail = async (req, res) => {
   const { id } = req.params;
   try {
     const blog = await Blog.findById(id).populate('type_id', 'name');
-    console.log('ENTRY', { blog });
+    //console.log('ENTRY', { blog });
     return res.status(200).json({ blog });
   } catch (error) {
     return res.status(400).json({ message: error.message });
