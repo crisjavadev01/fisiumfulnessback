@@ -7,7 +7,7 @@ const authAll = (req, res, next) => {
     if (!token) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
-    console.log(token);
+    //console.log(token);
     jwt.verify(token, JWT_secret, (err, decoded) => {
         if (err) {
             return res.status(401).json({ message: 'Invalid token' });
