@@ -1,10 +1,14 @@
 const { Router } = require("express");
-const loginController = require("../controllers/loginController");
+const { 
+  login,
+  recoverAccount
+} = require("../controllers/index");
+
 const loginRouter = Router();
 
 // loginRouter.post("/", loginController.login); // Cambio aquí
-loginRouter.post("/", loginController.login);
-loginRouter.post("/recover-password", loginController.recoverAccount);
+loginRouter.post("/", login);
+loginRouter.post("/recover-password", recoverAccount);
 
 module.exports = loginRouter;
 

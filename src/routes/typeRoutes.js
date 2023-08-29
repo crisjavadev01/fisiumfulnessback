@@ -4,7 +4,7 @@ const {
   getTypes,
   getTypeById,
   deleteType
-} = require('../controllers/typeController.js');
+} = require('../controllers/index');
 
 const router = Router();
 
