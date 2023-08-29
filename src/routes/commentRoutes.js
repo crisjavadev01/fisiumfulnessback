@@ -4,7 +4,7 @@ const {
   getComment,
   getCommentBlog,
   deleteComment,
-} = require('../controllers/commentController');
+} = require('../controllers/index');
 
 const router = Router();
 

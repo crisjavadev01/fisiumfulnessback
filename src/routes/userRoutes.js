@@ -6,7 +6,7 @@ const {
   updateUser,
   statusUser,
   deleteUser,
-} = require('../controllers/userController');
+} = require('../controllers/index');
 const { upload } = require('../config/multerConfig');
 
 const router = Router();
