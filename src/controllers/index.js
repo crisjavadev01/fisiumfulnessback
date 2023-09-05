@@ -60,6 +60,11 @@ const {
 } = require("./user/index")
 
 
+const {
+  sendEmail
+} = require("./mail/index")
+
+
 module.exports = {
   createBlog,
   deleteBlog,
@@ -94,5 +99,6 @@ module.exports = {
   getDetail,
   getUser,
   statusUser,
-  updateUser
+  updateUser,
+  sendEmail
 }
