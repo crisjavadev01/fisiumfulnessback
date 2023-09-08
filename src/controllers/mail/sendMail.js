@@ -23,13 +23,16 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async (req, res) => {
   try {
     const { to, subject, text } = req.body;
-    console.log("BACK: ",to, subject,text)
 
     const mailOptions = {
       from: MAIL,
       to,
       subject,
       text,
+      attachments: [{
+        filename: "lorem-ipsum.pdf",
+        path: "./src/controllers/mail/lorem-ipsum.pdf"
+      }]
     };
 
     const info = await transporter.sendMail(mailOptions);
