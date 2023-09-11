@@ -22,18 +22,24 @@ const transporter = nodemailer.createTransport({
 // Function to send an email
 const sendEmail = async (req, res) => {
   try {
-    const { to, subject, text } = req.body;
+    const { to, subject, text, attach } = req.body;
+
+    console.log(attach)
 
     const mailOptions = {
       from: MAIL,
       to,
       subject,
       text,
-      attachments: [{
-        filename: "lorem-ipsum.pdf",
-        path: "./src/controllers/mail/lorem-ipsum.pdf"
-      }]
+      
     };
+
+    if (attach) {
+      mailOptions.attachments = [{
+        filename: "lorem-ipsum.pdf",
+        path: "./src/controllers/mail/lorem-ipsum.pdf",
+      }];
+    }
 
     const info = await transporter.sendMail(mailOptions);
 
