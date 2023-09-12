@@ -13,6 +13,7 @@ const createUser = async (req, res) => {
     latitud,
     longitud,
     role,
+    address
   } = req.body;
 
   try {
@@ -45,6 +46,7 @@ const createUser = async (req, res) => {
       latitud,
       longitud,
       role,
+      address,
       image: urlImage,
       id_image: public_id_prueba,
     };

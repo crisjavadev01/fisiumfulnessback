@@ -41,7 +41,6 @@ const User = new Schema(
       unique: true,
       required: true,
     },
-
     role: {
       type: String,
       default: 'user',
@@ -65,6 +64,10 @@ const User = new Schema(
     longitud: {
       type: Number,
       default: 0,
+    },
+    address: {
+      type: String,
+      default: '',
     },
     image: {
       type: String,
