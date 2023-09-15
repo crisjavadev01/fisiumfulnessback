@@ -22,28 +22,58 @@ const transporter = nodemailer.createTransport({
 // Function to send an email
 const sendEmail = async (req, res) => {
   try {
-    const { to, subject, text, attach } = req.body;
-
-    console.log(attach)
+    const { dni, to, text, attach } = req.body;
+    const htmlUser = `
+      <p>Su postulacion fue recibida con exito y sera revisada a la brevedad.</p>
+      <p>A continuación, los detalles:</p>
+      <ul>
+        <li>DNI: ${dni}</li>
+        <li>Correo Electrónico: ${to}</li>
+      </ul>
+      <p>Texto adicional:</p>
+      <p>${text}</p>
+    `;
 
     const mailOptions = {
       from: MAIL,
       to,
-      subject,
-      text,
-      
-    };
-
-    if (attach) {
-      mailOptions.attachments = [{
+      subject:"Postulacion a FisiomFulness",
+      html: htmlUser,
+      attachments: [{
         filename: "lorem-ipsum.pdf",
         path: "./src/controllers/mail/lorem-ipsum.pdf",
-      }];
-    }
+      }]
+    };
 
-    const info = await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 
-    console.log('Email sent:', info.response);
+
+    const htmlAdmin = `
+      <p>Se recibio una nueva postulacion a FisiomFulness.</p>
+      <p>A continuación, los detalles:</p>
+      <ul>
+        <li>DNI: ${dni}</li>
+        <li>Correo Electrónico: ${to}</li>
+      </ul>
+      <p>Texto adicional:</p>
+      <p>${text}</p>
+    `;
+
+
+    const mailOptions2 = {
+      from: MAIL,
+      to, //agregar : MAIL para que este mail llegue a dilan
+      subject: "Nueva postulacion a FisiomFulness",
+      html: htmlAdmin,
+      /*attachments: [
+        {
+          filename: attach.name,
+          path: attach.data,
+        },
+      ], descomentar para agregar el cv del candidato*/
+    };
+
+    await transporter.sendMail(mailOptions2);
 
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
